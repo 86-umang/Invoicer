@@ -58,16 +58,32 @@ function App() {
                         {/* name, address, phone, client name, client address, 
                         invoice number, invoice date, due date, notes */}
                             <div className="flex flex-col justify-center">
-                                <label htmlFor="name">Enter your name</label>
-                                <input 
-                                    type="text" 
-                                    name="name" 
-                                    id="name" 
-                                    placeholder="Enter your name"
-                                    autocomplete="off"
-                                    value={name}
-                                    onChange={(e) => setName(e.target.value)}
-                                />
+                                <article className="gird-items gap-10">
+                                    <div className="flex flex-col">
+                                        <label htmlFor="name">Enter your name</label>
+                                        <input 
+                                            type="text" 
+                                            name="name" 
+                                            id="name" 
+                                            placeholder="Enter your name"
+                                            autocomplete="off"
+                                            value={name}
+                                            onChange={(e) => setName(e.target.value)}
+                                        />
+                                    </div>
+                                    <div className="flex flex-col">
+                                        <label htmlFor="phone">Enter your phone number</label>
+                                        <input 
+                                            type="text" 
+                                            name="phone" 
+                                            id="phone" 
+                                            placeholder="Enter your phone number"
+                                            autocomplete="off"
+                                            value={phone}
+                                            onChange={(e) => setPhone(e.target.value)}
+                                        />
+                                    </div>
+                                </article>
 
                                 <label htmlFor="address">Enter your address</label>
                                 <input 
@@ -78,17 +94,6 @@ function App() {
                                     autocomplete="off"
                                     value={address}
                                     onChange={(e) => setAddress(e.target.value)}
-                                />
-
-                                <label htmlFor="phone">Enter your phone number</label>
-                                <input 
-                                    type="text" 
-                                    name="phone" 
-                                    id="phone" 
-                                    placeholder="Enter your phone number"
-                                    autocomplete="off"
-                                    value={phone}
-                                    onChange={(e) => setPhone(e.target.value)}
                                 />
 
                                 <label htmlFor="clientName">Select your client's name</label>
