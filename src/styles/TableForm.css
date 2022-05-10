@@ -1,0 +1,10 @@
+@media only screen and (min-width: 1295px) {
+    .grid-tableform {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+    }
+
+    .uppermargin {
+        margin-top: 15pt;
+    }
+}

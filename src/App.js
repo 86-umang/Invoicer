@@ -6,21 +6,27 @@ import Header from "./components/Header";
 import MainDetails from "./components/MainDetails";
 import Notes from "./components/Notes";
 import Table from "./components/Table";
+import TableForm from "./components/TableForm";
 
 function App() {
 
-    const [showInvoice, setShowInvoice] = useState(false);
+    const [showInvoice, setShowInvoice] = useState(true);
     const [checked, setChecked] = useState(false);
     const [checkedAddress, setCheckedAddress] = useState(false);
     const [name, setName] = useState("Kanubhai Patel");
     const [address, setAddress] = useState("Shop No - 7 Mini Shopping Centre Main Bazar Near Old Police Chowki, Nandesari, Vadodara, Gujarat 391340");
     const [phone, setPhone] = useState("+91 9426522348");
-    const [clientName, setClientName] = useState("");
-    const [clientAddress, setClientAddress] = useState("");
-    const [invoiceNumber, setInvoiceNumber] = useState("");
-    const [invoiceDate, setInvoiceDate] = useState("");
-    const [dueDate, setDueDate] = useState("");
-    const [notes, setNotes] = useState("");
+    const [clientName, setClientName] = useState("Ishitwa");
+    const [clientAddress, setClientAddress] = useState("GIDC");
+    const [invoiceNumber, setInvoiceNumber] = useState("1004");
+    const [invoiceDate, setInvoiceDate] = useState("20/10/2021");
+    const [dueDate, setDueDate] = useState("01/11/2021");
+    const [notes, setNotes] = useState("Pay as soon as possible.");
+    const [description, setDescription] = useState("");
+    const [quantity, setQuantity] = useState("");
+    const [price, setPrice] = useState("");
+    const [amount, setAmount] = useState("");
+    const [list, setList] = useState([]);
 
     const handlePrint = () => {
         window.print();
@@ -39,7 +45,12 @@ function App() {
 
                         <Dates invoiceNumber={invoiceNumber} invoiceDate={invoiceDate} dueDate={dueDate} />
 
-                        <Table />
+                        <Table 
+                            description={description}
+                            quantity={quantity}
+                            price={price}
+                            amount={amount}
+                        />
 
                         <Notes notes={notes} />
 
@@ -66,7 +77,7 @@ function App() {
                                             name="name" 
                                             id="name" 
                                             placeholder="Enter your name"
-                                            autocomplete="off"
+                                            autoComplete="off"
                                             value={name}
                                             onChange={(e) => setName(e.target.value)}
                                         />
@@ -78,7 +89,7 @@ function App() {
                                             name="phone" 
                                             id="phone" 
                                             placeholder="Enter your phone number"
-                                            autocomplete="off"
+                                            autoComplete="off"
                                             value={phone}
                                             onChange={(e) => setPhone(e.target.value)}
                                         />
@@ -91,7 +102,7 @@ function App() {
                                     name="address" 
                                     id="address" 
                                     placeholder="Enter your address"
-                                    autocomplete="off"
+                                    autoComplete="off"
                                     value={address}
                                     onChange={(e) => setAddress(e.target.value)}
                                 />
@@ -120,7 +131,7 @@ function App() {
                                                 name="clientName1" 
                                                 id="clientName1" 
                                                 placeholder="Enter your client's name"
-                                                autocomplete="off"
+                                                autoComplete="off"
                                                 value={clientName}
                                                 onChange={(e) => setClientName(e.target.value)}
                                             />
@@ -140,7 +151,7 @@ function App() {
                                 
                                 {!checkedAddress ?
                                     <>
-                                        <label htmlFor="clientAddress">Select your client's address</label>
+                                        <label className="mt-5" htmlFor="clientAddress">Select your client's address</label>
                                         <select
                                             id="clientAddress"
                                             value={clientAddress}
@@ -162,7 +173,7 @@ function App() {
                                                 name="clientAddress1" 
                                                 id="clientAddress1" 
                                                 placeholder="Enter your client's Address"
-                                                autocomplete="off"
+                                                autoComplete="off"
                                                 value={clientAddress}
                                                 onChange={(e) => setClientAddress(e.target.value)}
                                             />
@@ -187,7 +198,7 @@ function App() {
                                             name="invoiceNumber" 
                                             id="invoiceNumber" 
                                             placeholder="Invoice Number"
-                                            autocomplete="off"
+                                            autoComplete="off"
                                             value={invoiceNumber}
                                             onChange={(e) => setInvoiceNumber(e.target.value)}
                                         />
@@ -200,7 +211,7 @@ function App() {
                                             name="invoiceDate" 
                                             id="invoiceDate" 
                                             placeholder="Invoice Date"
-                                            autocomplete="off"
+                                            autoComplete="off"
                                             value={invoiceDate}
                                             onChange={(e) => setInvoiceDate(e.target.value)}
                                         />
@@ -215,14 +226,23 @@ function App() {
                                             name="dueDate" 
                                             id="dueDate" 
                                             placeholder="Due Date"
-                                            autocomplete="off"
+                                            autoComplete="off"
                                             value={dueDate}
                                             onChange={(e) => setDueDate(e.target.value)}
                                         />
                                     </div>
                                 </article>
 
-
+                                {/* This is our table form */}
+                                <article>
+                                    <TableForm 
+                                        description={description} setDescription={setDescription}
+                                        quantity={quantity} setQuantity={setQuantity}
+                                        price={price} setPrice={setPrice}
+                                        amount={amount} setAmount={setAmount} 
+                                        list={list} setList={setList}
+                                    />
+                                </article>
 
                                 <label className="mt-16" htmlFor="notes">Additional Notes</label>
                                 <textarea
@@ -231,7 +251,7 @@ function App() {
                                     cols="30"
                                     rows="10"
                                     placeholder="Additional notes to the clients"
-                                    autocomplete="off"
+                                    autoComplete="off"
                                     value={notes}
                                     onChange={(e) => setNotes(e.target.value)}
                                 />
