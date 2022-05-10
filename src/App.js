@@ -10,6 +10,8 @@ import Table from "./components/Table";
 function App() {
 
     const [showInvoice, setShowInvoice] = useState(false);
+    const [checked, setChecked] = useState(false);
+    const [checkedAddress, setCheckedAddress] = useState(false);
     const [name, setName] = useState("Kanubhai Patel");
     const [address, setAddress] = useState("Shop No - 7 Mini Shopping Centre Main Bazar Near Old Police Chowki, Nandesari, Vadodara, Gujarat 391340");
     const [phone, setPhone] = useState("+91 9426522348");
@@ -55,8 +57,6 @@ function App() {
                         </button>
                     </div> : (
                         <>
-                        {/* name, address, phone, client name, client address, 
-                        invoice number, invoice date, due date, notes */}
                             <div className="flex flex-col justify-center">
                                 <article className="gird-items gap-10">
                                     <div className="flex flex-col">
@@ -96,91 +96,135 @@ function App() {
                                     onChange={(e) => setAddress(e.target.value)}
                                 />
 
-                                <label htmlFor="clientName">Select your client's name</label>
-                                <select
-                                    id="clientName"
-                                    value={clientName}
-                                    onChange={(e) => setClientName(e.target.value)}
-                                >
-                                    <option selected disabled value="">--Select Company--</option>
-                                    <option>Company 1</option>
-                                    <option>Company 2</option>
-                                    <option>Company 3</option>
-                                    <option>Company 4</option>
-                                </select>
+                                {!checked ?
+                                    <>
+                                        <label className="mt-16" htmlFor="clientName">Select your client's name</label>
+                                        <select
+                                            id="clientName"
+                                            value={clientName}
+                                            onChange={(e) => setClientName(e.target.value)}
+                                        >
+                                            <option selected disabled value="">--Select Company--</option>
+                                            <option>Company 1</option>
+                                            <option>Company 2</option>
+                                            <option>Company 3</option>
+                                            <option>Company 4</option>
+                                        </select>
+        
+                                    </>
+                                    : (
+                                        <>
+                                            <label className="mt-16" htmlFor="clientName1">Enter your client's name</label>
+                                            <input 
+                                                type="text" 
+                                                name="clientName1" 
+                                                id="clientName1" 
+                                                placeholder="Enter your client's name"
+                                                autocomplete="off"
+                                                value={clientName}
+                                                onChange={(e) => setClientName(e.target.value)}
+                                            />
+                                        </>
+                                    )    
+                                }
+                                
+                                <div className="line">
+                                    <input 
+                                        type="checkbox"
+                                        checked={checked}
+                                        onChange={() => setChecked(!checked)}
+                                    />
+                                    <label className="p-2 font-normal" htmlFor="check">Check the box if your client's name is not in above list then type your client's name above.</label>
+                                </div>
 
-                                <strong>If your client's name is not in above list then type your client's name below.</strong>
-                                <label htmlFor="clientName1">Enter your client's name</label>
-                                <input 
-                                    type="text" 
-                                    name="clientName1" 
-                                    id="clientName1" 
-                                    placeholder="Enter your client's name"
-                                    autocomplete="off"
-                                    value={clientName}
-                                    onChange={(e) => setClientName(e.target.value)}
-                                />
+                                
+                                {!checkedAddress ?
+                                    <>
+                                        <label htmlFor="clientAddress">Select your client's address</label>
+                                        <select
+                                            id="clientAddress"
+                                            value={clientAddress}
+                                            onChange={(e) => setClientAddress(e.target.value)}
+                                        >
+                                            <option selected disabled value="">--Select Address--</option>
+                                            <option>GIDC Nandesari</option>
+                                            <option>Anagadh</option>
+                                            <option>Rupapura</option>
+                                            <option>Damapura</option>
+                                            <option>Ranoli</option>
+                                        </select>
+                                    </>
+                                    : (
+                                        <>
+                                            <label htmlFor="clientAddress1">Enter your client's address</label>
+                                            <input 
+                                                type="text" 
+                                                name="clientAddress1" 
+                                                id="clientAddress1" 
+                                                placeholder="Enter your client's Address"
+                                                autocomplete="off"
+                                                value={clientAddress}
+                                                onChange={(e) => setClientAddress(e.target.value)}
+                                            />
+                                        </>
+                                    )
+                                }
 
-                                <label htmlFor="clientAddress">Select your client's address</label>
-                                <select
-                                    id="clientAddress"
-                                    value={clientAddress}
-                                    onChange={(e) => setClientAddress(e.target.value)}
-                                >
-                                    <option selected disabled value="">--Select Address--</option>
-                                    <option>GIDC Nandesari</option>
-                                    <option>Anagadh</option>
-                                    <option>Rupapura</option>
-                                    <option>Damapura</option>
-                                    <option>Ranoli</option>
-                                </select>
+                                <div className="line">
+                                    <input 
+                                        type="checkbox"
+                                        checked={checkedAddress}
+                                        onChange={() => setCheckedAddress(!checkedAddress)}
+                                    />
+                                    <label className="p-2 font-normal" htmlFor="check">Check the box if your client's address is not in above list then type your client's address above.</label>
+                                </div>
+                                
+                                <article className="gird-items gap-10 mt-16">
+                                    <div className="flex flex-col">
+                                        <label htmlFor="invoiceNumber">Invoice Number</label>
+                                        <input 
+                                            type="text" 
+                                            name="invoiceNumber" 
+                                            id="invoiceNumber" 
+                                            placeholder="Invoice Number"
+                                            autocomplete="off"
+                                            value={invoiceNumber}
+                                            onChange={(e) => setInvoiceNumber(e.target.value)}
+                                        />
+                                    </div>
 
-                                <strong>If your client's address is not in above list then type your client's address below.</strong>
-                                <label htmlFor="clientAddress1">Enter your client's address</label>
-                                <input 
-                                    type="text" 
-                                    name="clientAddress1" 
-                                    id="clientAddress1" 
-                                    placeholder="Enter your client's Address"
-                                    autocomplete="off"
-                                    value={clientAddress}
-                                    onChange={(e) => setClientAddress(e.target.value)}
-                                />
+                                    <div className="flex flex-col">
+                                        <label htmlFor="invoiceDate">Invoice Date</label>
+                                        <input 
+                                            type="date" 
+                                            name="invoiceDate" 
+                                            id="invoiceDate" 
+                                            placeholder="Invoice Date"
+                                            autocomplete="off"
+                                            value={invoiceDate}
+                                            onChange={(e) => setInvoiceDate(e.target.value)}
+                                        />
+                                    </div>
+                                </article>
 
-                                <label htmlFor="invoiceNumber">Invoice Number</label>
-                                <input 
-                                    type="text" 
-                                    name="invoiceNumber" 
-                                    id="invoiceNumber" 
-                                    placeholder="Invoice Number"
-                                    autocomplete="off"
-                                    value={invoiceNumber}
-                                    onChange={(e) => setInvoiceNumber(e.target.value)}
-                                />
+                                <article className="gird-items gap-10">
+                                    <div className="flex flex-col">
+                                        <label htmlFor="dueDate">Due Date</label>
+                                        <input 
+                                            type="date" 
+                                            name="dueDate" 
+                                            id="dueDate" 
+                                            placeholder="Due Date"
+                                            autocomplete="off"
+                                            value={dueDate}
+                                            onChange={(e) => setDueDate(e.target.value)}
+                                        />
+                                    </div>
+                                </article>
 
-                                <label htmlFor="invoiceDate">Invoice Date</label>
-                                <input 
-                                    type="date" 
-                                    name="invoiceDate" 
-                                    id="invoiceDate" 
-                                    placeholder="Invoice Date"
-                                    autocomplete="off"
-                                    value={invoiceDate}
-                                    onChange={(e) => setInvoiceDate(e.target.value)}
-                                />
 
-                                <label htmlFor="dueDate">Due Date</label>
-                                <input 
-                                    type="date" 
-                                    name="dueDate" 
-                                    id="dueDate" 
-                                    placeholder="Due Date"
-                                    autocomplete="off"
-                                    value={dueDate}
-                                    onChange={(e) => setDueDate(e.target.value)}
-                                />
 
-                                <label htmlFor="notes">Additional Notes</label>
+                                <label className="mt-16" htmlFor="notes">Additional Notes</label>
                                 <textarea
                                     name="notes" 
                                     id="notes" 

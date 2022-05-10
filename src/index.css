@@ -17,6 +17,10 @@ textarea {
   resize: none;
 }
 
+.line {
+  margin-bottom: 0.3rem;
+}
+
 @media only screen and (min-width: 600px) {
   .gird-items {
     display: grid;
