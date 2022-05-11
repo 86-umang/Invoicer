@@ -45,7 +45,7 @@ function TableForm({description, setDescription, quantity, setQuantity, price, s
                             value={description}
                             onChange={(e) => setDescription(e.target.value)}
                         >
-                            <option selected disabled value="">--Select Item--</option>
+                            <option disabled value="">--Select Item--</option>
                             <option>Milk</option>
                             <option>Butter Milk</option>
                             <option>Tea</option>
@@ -117,6 +117,30 @@ function TableForm({description, setDescription, quantity, setQuantity, price, s
                         transition-all duration-300"
                 >Add Table Item</button>
             </form>
+
+            {/* Table items */}
+            <table className='mt-5' width="100%">
+                <thead>
+                    <tr className='bg-gray-100'>
+                        <td className='font-bold'>Description</td>
+                        <td className='font-bold'>Quantity</td>
+                        <td className='font-bold'>Price</td>
+                        <td className='font-bold'>Amount</td>
+                    </tr>
+                </thead>
+                {list.map(({id, description, quantity, price, amount}) => (
+                    <React.Fragment key={id}>
+                        <tbody>
+                            <tr>
+                                <td>{description}</td>
+                                <td>{quantity}</td>
+                                <td>{price}</td>
+                                <td>{amount}</td>
+                            </tr>
+                        </tbody>
+                    </React.Fragment>
+                ))}
+            </table>
         </>
     );
 }

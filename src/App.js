@@ -16,8 +16,8 @@ function App() {
     const [name, setName] = useState("Kanubhai Patel");
     const [address, setAddress] = useState("Shop No - 7 Mini Shopping Centre Main Bazar Near Old Police Chowki, Nandesari, Vadodara, Gujarat 391340");
     const [phone, setPhone] = useState("+91 9426522348");
-    const [clientName, setClientName] = useState("Ishitwa");
-    const [clientAddress, setClientAddress] = useState("GIDC");
+    const [clientName, setClientName] = useState("");
+    const [clientAddress, setClientAddress] = useState("");
     const [invoiceNumber, setInvoiceNumber] = useState("1004");
     const [invoiceDate, setInvoiceDate] = useState("20/10/2021");
     const [dueDate, setDueDate] = useState("01/11/2021");
@@ -50,6 +50,8 @@ function App() {
                             quantity={quantity}
                             price={price}
                             amount={amount}
+                            list={list} 
+                            setList={setList}
                         />
 
                         <Notes notes={notes} />
@@ -115,7 +117,7 @@ function App() {
                                             value={clientName}
                                             onChange={(e) => setClientName(e.target.value)}
                                         >
-                                            <option selected disabled value="">--Select Company--</option>
+                                            <option disabled value="">--Select Company--</option>
                                             <option>Company 1</option>
                                             <option>Company 2</option>
                                             <option>Company 3</option>
@@ -157,7 +159,7 @@ function App() {
                                             value={clientAddress}
                                             onChange={(e) => setClientAddress(e.target.value)}
                                         >
-                                            <option selected disabled value="">--Select Address--</option>
+                                            <option disabled value="">--Select Address--</option>
                                             <option>GIDC Nandesari</option>
                                             <option>Anagadh</option>
                                             <option>Rupapura</option>

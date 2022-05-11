@@ -1,9 +1,9 @@
 import React from 'react';
 
-function Table({description, quantity, price, amount}) {
+function Table({list}) {
     return (
         <>
-            <table width="100%">
+            <table className='mt-5' width="100%">
                 <thead>
                     <tr className='bg-gray-100'>
                         <td className='font-bold'>Description</td>
@@ -12,15 +12,18 @@ function Table({description, quantity, price, amount}) {
                         <td className='font-bold'>Amount</td>
                     </tr>
                 </thead>
-
-                <tbody>
-                    <tr>
-                        <td>{description}</td>
-                        <td>{quantity}</td>
-                        <td>{price}</td>
-                        <td>{amount}</td>
-                    </tr>
-                </tbody>
+                {list.map(({id, description, quantity, price, amount}) => (
+                    <React.Fragment key={id}>
+                        <tbody>
+                            <tr>
+                                <td>{description}</td>
+                                <td>{quantity}</td>
+                                <td>{price}</td>
+                                <td>{amount}</td>
+                            </tr>
+                        </tbody>
+                    </React.Fragment>
+                ))}
             </table>
         </>
     );
