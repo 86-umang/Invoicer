@@ -35,7 +35,7 @@ label {
   color: #112827;
 }
 
-input[type=text], input[type=date], textarea {
+input[type=text], input[type=date], input[type=number], textarea {
   background-color: #f1f1f1;
   padding: 0.5rem;
   border-radius: 0.2rem;

@@ -12,19 +12,24 @@ function TableForm({description, setDescription, quantity, setQuantity, price, s
     const handleSubmit = (e) => {
         e.preventDefault();
 
-        const newItems = {
-            id: uuidv4(),
-            description: description,
-            quantity: quantity,
-            price: price,
-            amount: amount
+        if (!description || !quantity || !price) {
+            alert("Please fill in all inputs")
+        } else {
+            const newItems = {
+                id: uuidv4(),
+                description: description,
+                quantity: quantity,
+                price: price,
+                amount: amount
+            }
+            setDescription("")
+            setQuantity("")
+            setPrice("")
+            setAmount("")
+            setList([...list, newItems]) 
+            setIsEditing(false)
         }
-        setDescription("")
-        setQuantity("")
-        setPrice("")
-        setAmount("")
-        setList([...list, newItems]) 
-        setIsEditing(false)
+
     }
 
     // Calculate items amount function
@@ -78,10 +83,23 @@ function TableForm({description, setDescription, quantity, setQuantity, price, s
                             onChange={(e) => setDescription(e.target.value)}
                         >
                             <option disabled value="">--Select Item--</option>
-                            <option>Milk</option>
+                            <option>Milk (Gold)</option>
+                            <option>Milk (Shakti)</option>
+                            <option>Milk (Taja)</option>
+                            <option>Milk (Small)</option>
                             <option>Butter Milk</option>
+                            <option>Curd</option>
+                            <option>Loose Curd</option>
+                            <option>Tin Curd</option>
                             <option>Tea</option>
+                            <option>Tea Masala</option>
                             <option>Sugar</option>
+                            <option>Glass</option>
+                            <option>Bun</option>
+                            <option>Bread</option>
+                            <option>Flavour Milk</option>
+                            <option>Biscuit</option>
+                            <option>Toast</option>
                         </select>
                     </div>
                     : (
@@ -112,7 +130,7 @@ function TableForm({description, setDescription, quantity, setQuantity, price, s
                     <div className='mt-5 flex flex-col'>
                         <label htmlFor='quantity'>Quantity</label>
                         <input 
-                            type="text"
+                            type="number"
                             name="quantity"
                             id="quantity"
                             autoComplete="off"
@@ -125,7 +143,7 @@ function TableForm({description, setDescription, quantity, setQuantity, price, s
                     <div className='flex flex-col uppermargin'>
                         <label htmlFor='price'>Price</label>
                         <input 
-                            type="text"
+                            type="number"
                             name="price"
                             id="price"
                             autoComplete="off"
@@ -147,6 +165,7 @@ function TableForm({description, setDescription, quantity, setQuantity, price, s
                         rounded shadow border-2 border-blue-500 
                         hover:bg-transparent hover:text-blue-500
                         transition-all duration-300"
+                    onClick={() => setChecked(false)}
                 >
                     {isEditing ? "Editing Row Item" : "Add Table Item" }
                     

@@ -4,7 +4,7 @@ function MainDetails({name, address}) {
     return (
         <>
             <section className="flex flex-col items-end justify-end" >
-                <h2 className="text-xl uppercase font-bold mb-1 md:text-4xl">{name}</h2>
+                <h2 className="text-2xl uppercase font-bold mb-1 md:text-4xl">{name}</h2>
                 <p className='text-justify'>{address}</p>
             </section>
         </>

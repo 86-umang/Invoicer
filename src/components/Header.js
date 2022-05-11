@@ -5,10 +5,10 @@ function Header({handlePrint}) {
         <>
             <header className="flex flex-col items-center justify-center mb-5">
                 <div>
-                    <h2 className="font-bold uppercase tracking-wide text-2xl">S.K Dairy and Provision Store</h2>
+                    <h2 className="font-bold uppercase tracking-wide text-3xl">S.K Dairy and Provision Store</h2>
                 </div>
 
-                <div>
+                {/* <div>
                     <ul className="flex items-center justify-between flex-wrap">
                         <li>
                             <button onClick={handlePrint}
@@ -38,7 +38,7 @@ function Header({handlePrint}) {
                             >Send</button>
                         </li>
                     </ul>
-                </div>
+                </div> */}
             </header>
         </>
     );
