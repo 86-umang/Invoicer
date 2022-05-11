@@ -3,7 +3,7 @@ import React from 'react';
 function Dates({invoiceNumber, invoiceDate, dueDate}) {
     return (
         <>
-            <article className="my-5 flex items-end justify-end">
+            <article className="mt-5 mb-5 flex items-end justify-end">
                 <ul>
                     <li className="p-1">
                         <span className="font-bold">Invoicer number: </span>{invoiceNumber}

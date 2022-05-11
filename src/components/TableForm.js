@@ -3,7 +3,7 @@ import { v4 as uuidv4 } from "uuid";
 import {AiOutlineDelete, AiOutlineEdit} from 'react-icons/ai';
 import '../styles/TableForm.css';
 
-function TableForm({description, setDescription, quantity, setQuantity, price, setPrice, amount, setAmount, list, setList}) {
+function TableForm({description, setDescription, quantity, setQuantity, price, setPrice, amount, setAmount, list, setList, total, setTotal}) {
 
     const [checked, setChecked] = useState(false);
     const [isEditing, setIsEditing] = useState(false);
@@ -25,7 +25,6 @@ function TableForm({description, setDescription, quantity, setQuantity, price, s
         setAmount("")
         setList([...list, newItems]) 
         setIsEditing(false)
-        console.log(list);
     }
 
     // Calculate items amount function
@@ -35,7 +34,21 @@ function TableForm({description, setDescription, quantity, setQuantity, price, s
         }
 
         calculateAmount()
+
     }, [price, quantity, setAmount])
+
+    // Calcualte total amount of items in table
+    useEffect(() => {
+        let rows = document.querySelectorAll(".amount");
+        let sum = 0;
+    
+        for(let i = 0; i < rows.length; i++) {
+            if (rows[i].className === "amount") {
+                sum += isNaN(rows[i].innerHTML) ? 0 : parseInt(rows[i].innerHTML);
+                setTotal(sum);
+            }
+        }
+    })
 
     // Edit function
     const editRow = (id) => {
@@ -157,7 +170,7 @@ function TableForm({description, setDescription, quantity, setQuantity, price, s
                                 <td>{description}</td>
                                 <td>{quantity}</td>
                                 <td>{price}</td>
-                                <td>{amount}</td>
+                                <td className='amount'>{amount}</td>
                                 <td>
                                     <button onClick={() => deleteRow(id)}>
                                         <AiOutlineDelete className='text-red-500 font-bold text-xl' />
@@ -173,6 +186,10 @@ function TableForm({description, setDescription, quantity, setQuantity, price, s
                     </React.Fragment>
                 ))}
             </table>
+
+            <div className='mt-8'>
+                <h2 className='flex items-end justify-end text-gray-800 text-4xl font-bold'>Rs. {total.toLocaleString()}</h2>
+            </div>
         </>
     );
 }

@@ -16,8 +16,8 @@ function App() {
     const [name, setName] = useState("Kanubhai Patel");
     const [address, setAddress] = useState("Shop No - 7 Mini Shopping Centre Main Bazar Near Old Police Chowki, Nandesari, Vadodara, Gujarat 391340");
     const [phone, setPhone] = useState("+91 9426522348");
-    const [clientName, setClientName] = useState("");
-    const [clientAddress, setClientAddress] = useState("");
+    const [clientName, setClientName] = useState("Ishitwa");
+    const [clientAddress, setClientAddress] = useState("Gidc Nandesari");
     const [invoiceNumber, setInvoiceNumber] = useState("1004");
     const [invoiceDate, setInvoiceDate] = useState("20/10/2021");
     const [dueDate, setDueDate] = useState("01/11/2021");
@@ -27,6 +27,7 @@ function App() {
     const [price, setPrice] = useState("");
     const [amount, setAmount] = useState("");
     const [list, setList] = useState([]);
+    const [total, setTotal] = useState(0);
 
     const handlePrint = () => {
         window.print();
@@ -52,6 +53,8 @@ function App() {
                             amount={amount}
                             list={list} 
                             setList={setList}
+                            total={total}
+                            setTotal={setTotal}
                         />
 
                         <Notes notes={notes} />
@@ -243,6 +246,7 @@ function App() {
                                         price={price} setPrice={setPrice}
                                         amount={amount} setAmount={setAmount} 
                                         list={list} setList={setList}
+                                        total={total} setTotal={setTotal}
                                     />
                                 </article>
 
