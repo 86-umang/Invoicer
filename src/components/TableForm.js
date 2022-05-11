@@ -1,12 +1,12 @@
-import React, { useEffect } from 'react';
-import { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { v4 as uuidv4 } from "uuid";
-import {AiOutlineDelete} from 'react-icons/ai';
+import {AiOutlineDelete, AiOutlineEdit} from 'react-icons/ai';
 import '../styles/TableForm.css';
 
 function TableForm({description, setDescription, quantity, setQuantity, price, setPrice, amount, setAmount, list, setList}) {
 
     const [checked, setChecked] = useState(false);
+    const [isEditing, setIsEditing] = useState(false);
 
     // Submit Form Function
     const handleSubmit = (e) => {
@@ -24,6 +24,7 @@ function TableForm({description, setDescription, quantity, setQuantity, price, s
         setPrice("")
         setAmount("")
         setList([...list, newItems]) 
+        setIsEditing(false)
         console.log(list);
     }
 
@@ -37,10 +38,18 @@ function TableForm({description, setDescription, quantity, setQuantity, price, s
     }, [price, quantity, setAmount])
 
     // Edit function
+    const editRow = (id) => {
+        const editingRow = list.find((row) => row.id === id);
+        setList(list.filter((row) => row.id !== id));
+        setIsEditing(true)
+        setDescription(editingRow.description)
+        setQuantity(editingRow.quantity)
+        setPrice(editingRow.price)
+    }
 
     // Delete function
     const deleteRow = (id) => {
-        setList(list.filter((row) => row.id !== id))
+        setList(list.filter((row) => row.id !== id));
     }
 
 
@@ -125,7 +134,10 @@ function TableForm({description, setDescription, quantity, setQuantity, price, s
                         rounded shadow border-2 border-blue-500 
                         hover:bg-transparent hover:text-blue-500
                         transition-all duration-300"
-                >Add Table Item</button>
+                >
+                    {isEditing ? "Editing Row Item" : "Add Table Item" }
+                    
+                </button>
             </form>
 
             {/* Table items */}
@@ -149,6 +161,11 @@ function TableForm({description, setDescription, quantity, setQuantity, price, s
                                 <td>
                                     <button onClick={() => deleteRow(id)}>
                                         <AiOutlineDelete className='text-red-500 font-bold text-xl' />
+                                    </button>
+                                </td>
+                                <td>
+                                    <button onClick={() => editRow(id)}>
+                                        <AiOutlineEdit className='text-green-500 font-bold text-xl' />
                                     </button>
                                 </td>
                             </tr>
