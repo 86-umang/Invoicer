@@ -31,11 +31,7 @@ function App() {
     const [total, setTotal] = useState(0);
 
     const componentRef = useRef();
-
-    const handlePrint = () => {
-        window.print();
-    }
-
+    
     return (
         <>
             <main className="m-5 p-5 md:max-w-xl md:mx-auto lg:max-w-2xl xl:max-w-4xl bg-white rounded shadow">
@@ -52,9 +48,10 @@ function App() {
                                 </button>
                             }
                             content={() => componentRef.current}
+                            documentTitle= {clientName}
                         />
                         <div ref={componentRef} className="p-5 pt-10">
-                            <Header handlePrint={handlePrint}/>
+                            <Header/>
 
                             <MainDetails name={name} address={address} />
 

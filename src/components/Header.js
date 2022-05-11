@@ -1,6 +1,6 @@
 import React from 'react';
 
-function Header({handlePrint}) {
+function Header() {
     return (
         <>
             <header className="flex flex-col items-center justify-center mb-5">
