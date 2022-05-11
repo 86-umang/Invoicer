@@ -1,12 +1,14 @@
 import React, { useEffect } from 'react';
 import { useState } from 'react';
 import { v4 as uuidv4 } from "uuid";
+import {AiOutlineDelete} from 'react-icons/ai';
 import '../styles/TableForm.css';
 
 function TableForm({description, setDescription, quantity, setQuantity, price, setPrice, amount, setAmount, list, setList}) {
 
     const [checked, setChecked] = useState(false);
 
+    // Submit Form Function
     const handleSubmit = (e) => {
         e.preventDefault();
 
@@ -25,6 +27,7 @@ function TableForm({description, setDescription, quantity, setQuantity, price, s
         console.log(list);
     }
 
+    // Calculate items amount function
     useEffect(() => {
         const calculateAmount = () => {
             setAmount(quantity * price)
@@ -32,6 +35,13 @@ function TableForm({description, setDescription, quantity, setQuantity, price, s
 
         calculateAmount()
     }, [price, quantity, setAmount])
+
+    // Edit function
+
+    // Delete function
+    const deleteRow = (id) => {
+        setList(list.filter((row) => row.id !== id))
+    }
 
 
     return (
@@ -136,6 +146,11 @@ function TableForm({description, setDescription, quantity, setQuantity, price, s
                                 <td>{quantity}</td>
                                 <td>{price}</td>
                                 <td>{amount}</td>
+                                <td>
+                                    <button onClick={() => deleteRow(id)}>
+                                        <AiOutlineDelete className='text-red-500 font-bold text-xl' />
+                                    </button>
+                                </td>
                             </tr>
                         </tbody>
                     </React.Fragment>
