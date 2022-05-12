@@ -50,7 +50,7 @@ function App() {
                             content={() => componentRef.current}
                             documentTitle= {clientName}
                         />
-                        <div ref={componentRef} className="p-5 pt-10">
+                        <div ref={componentRef} className="p-5 pt-7 border-b-2 border-t-2 border-l-2 border-r-2 border-gray-500 mt-5 mr-5 ml-5">
                             <Header/>
 
                             <MainDetails name={name} address={address} />
