@@ -3,7 +3,7 @@ import { v4 as uuidv4 } from "uuid";
 import {AiOutlineDelete, AiOutlineEdit} from 'react-icons/ai';
 import '../styles/TableForm.css';
 
-function TableForm({description, setDescription, quantity, setQuantity, unit, setUnit, price, setPrice, amount, setAmount, list, setList, total, setTotal}) {
+function TableForm({description, setDescription, quantity, setQuantity, unit, setUnit, price, setPrice, amount, setAmount, list, setList, total, setTotal, word, setWord}) {
 
     const [checked, setChecked] = useState(false);
     const [isEditing, setIsEditing] = useState(false);
@@ -56,6 +56,25 @@ function TableForm({description, setDescription, quantity, setQuantity, unit, se
             }
         }
     })
+
+    useEffect(() => {
+        var a = ['','one ','two ','three ','four ', 'five ','six ','seven ','eight ','nine ','ten ','eleven ','twelve ','thirteen ','fourteen ','fifteen ','sixteen ','seventeen ','eighteen ','nineteen '];
+        var b = ['', '', 'twenty','thirty','forty','fifty', 'sixty','seventy','eighty','ninety'];
+
+        function inWords (num) {
+            if ((num = num.toString()).length > 9) return 'overflow';
+            let n = ('000000000' + num).substr(-9).match(/^(\d{2})(\d{2})(\d{2})(\d{1})(\d{2})$/);
+            if (!n) return; var str = '';
+            str += (n[1] != 0) ? (a[Number(n[1])] || b[n[1][0]] + ' ' + a[n[1][1]]) + 'crore ' : '';
+            str += (n[2] != 0) ? (a[Number(n[2])] || b[n[2][0]] + ' ' + a[n[2][1]]) + 'lakh ' : '';
+            str += (n[3] != 0) ? (a[Number(n[3])] || b[n[3][0]] + ' ' + a[n[3][1]]) + 'thousand ' : '';
+            str += (n[4] != 0) ? (a[Number(n[4])] || b[n[4][0]] + ' ' + a[n[4][1]]) + 'hundred ' : '';
+            str += (n[5] != 0) ? ((str != '') ? 'and ' : '') + (a[Number(n[5])] || b[n[5][0]] + ' ' + a[n[5][1]]) + 'only ' : '';
+            return str;
+        }
+
+        setWord(inWords(total))
+    },[total, word, setWord])
 
     // Edit function
     const editRow = (id) => {
@@ -223,9 +242,25 @@ function TableForm({description, setDescription, quantity, setQuantity, unit, se
                 ))}
             </table>
 
-            <div className='mt-8'>
-                <h2 className='flex items-end justify-end text-gray-800 text-4xl font-bold'>Rs. {total.toLocaleString()}</h2>
-            </div>
+            <table className='mt-5' width="100%">
+                <tbody>
+                    <tr>
+                        <td align='left' className='font-bold text-3xl text-gray-600'>Total:</td>
+                        <td align='right' className='font-bold text-3xl text-gray-800'>Rs. {total.toLocaleString()}</td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <table className='mt-5' width="100%">
+                <tbody>
+                    <tr>
+                        <td className='font-bold text-xl text-gray-600'>Total in words:</td>
+                    </tr>
+                    <tr>
+                        <td className='pt-1 font-bold uppercase text-gray-800'>{word}</td>
+                    </tr>
+                </tbody>
+            </table>
         </>
     );
 }

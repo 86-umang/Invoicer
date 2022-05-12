@@ -30,6 +30,7 @@ function App() {
     const [amount, setAmount] = useState("");
     const [list, setList] = useState([]);
     const [total, setTotal] = useState(0);
+    const [word, setWord] = useState("");
 
     const componentRef = useRef();
     
@@ -70,6 +71,7 @@ function App() {
                                 setList={setList}
                                 total={total}
                                 setTotal={setTotal}
+                                word={word}
                             />
 
                             <Notes notes={notes} />
@@ -283,6 +285,7 @@ function App() {
                                         amount={amount} setAmount={setAmount} 
                                         list={list} setList={setList}
                                         total={total} setTotal={setTotal}
+                                        word={word} setWord={setWord}
                                     />
                                 </article>
 

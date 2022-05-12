@@ -1,6 +1,6 @@
 import React from 'react';
 
-function Table({list, total}) {
+function Table({list, total, word}) {
     return (
         <>
             <table className='mt-5' width="100%">
@@ -28,9 +28,25 @@ function Table({list, total}) {
                 ))}
             </table>
 
-            <div className='mt-8'>
-                <h2 className='flex items-end justify-end text-gray-800 text-4xl font-bold'>Rs. {total.toLocaleString()}</h2>
-            </div>
+            <table className='mt-5' width="100%">
+                <tbody>
+                    <tr>
+                        <td align='left' className='font-bold text-3xl text-gray-600'>Total:</td>
+                        <td align='right' className='font-bold text-3xl text-gray-800'>Rs. {total.toLocaleString()}</td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <table className='mt-5' width="100%">
+                <tbody>
+                    <tr>
+                        <td className='font-bold text-xl text-gray-600'>Total in words:</td>
+                    </tr>
+                    <tr>
+                        <td className='pt-1 font-bold uppercase text-gray-800'>{word}</td>
+                    </tr>
+                </tbody>
+            </table>
         </>
     );
 }
