@@ -3,7 +3,7 @@ import { v4 as uuidv4 } from "uuid";
 import {AiOutlineDelete, AiOutlineEdit} from 'react-icons/ai';
 import '../styles/TableForm.css';
 
-function TableForm({description, setDescription, quantity, setQuantity, price, setPrice, amount, setAmount, list, setList, total, setTotal}) {
+function TableForm({description, setDescription, quantity, setQuantity, unit, setUnit, price, setPrice, amount, setAmount, list, setList, total, setTotal}) {
 
     const [checked, setChecked] = useState(false);
     const [isEditing, setIsEditing] = useState(false);
@@ -12,18 +12,20 @@ function TableForm({description, setDescription, quantity, setQuantity, price, s
     const handleSubmit = (e) => {
         e.preventDefault();
 
-        if (!description || !quantity || !price) {
+        if (!description || !quantity || !unit || !price) {
             alert("Please fill in all inputs")
         } else {
             const newItems = {
                 id: uuidv4(),
                 description: description,
                 quantity: quantity,
+                unit: unit,
                 price: price,
                 amount: amount
             }
             setDescription("")
             setQuantity("")
+            setUnit("")
             setPrice("")
             setAmount("")
             setList([...list, newItems]) 
@@ -62,6 +64,7 @@ function TableForm({description, setDescription, quantity, setQuantity, price, s
         setIsEditing(true)
         setDescription(editingRow.description)
         setQuantity(editingRow.quantity)
+        setUnit(editingRow.unit)
         setPrice(editingRow.price)
     }
 
@@ -141,6 +144,19 @@ function TableForm({description, setDescription, quantity, setQuantity, price, s
                     </div>
 
                     <div className='flex flex-col uppermargin'>
+                        <label htmlFor='unit'>Unit</label>
+                        <select
+                            id="unit"
+                            value={unit}
+                            onChange={(e) => setUnit(e.target.value)}
+                        >
+                            <option disabled value="">--Select Unit--</option>
+                            <option>kg</option>
+                            <option>pkt</option>
+                        </select>
+                    </div>
+
+                    <div className='flex flex-col uppermargin'>
                         <label htmlFor='price'>Price</label>
                         <input 
                             type="number"
@@ -152,11 +168,10 @@ function TableForm({description, setDescription, quantity, setQuantity, price, s
                             onChange={(e) => setPrice(e.target.value)}
                         />
                     </div>
-
-                    <div className='flex flex-col uppermargin'>
-                        <label htmlFor='amount'>Amount</label>
-                        <p>{amount}</p>
-                    </div>
+                </div>
+                <div>
+                    <label htmlFor='amount'>Amount</label>
+                    <p>{amount}</p>
                 </div>
                 <button 
                     type='submit'
@@ -178,16 +193,18 @@ function TableForm({description, setDescription, quantity, setQuantity, price, s
                     <tr className='bg-gray-100'>
                         <td className='font-bold'>Description</td>
                         <td className='font-bold'>Quantity</td>
+                        <td className='font-bold'>Unit</td>
                         <td className='font-bold'>Price</td>
                         <td className='font-bold'>Amount</td>
                     </tr>
                 </thead>
-                {list.map(({id, description, quantity, price, amount}) => (
+                {list.map(({id, description, quantity, unit, price, amount}) => (
                     <React.Fragment key={id}>
                         <tbody>
                             <tr>
                                 <td>{description}</td>
                                 <td>{quantity}</td>
+                                <td>{unit}</td>
                                 <td>{price}</td>
                                 <td className='amount'>{amount}</td>
                                 <td>

@@ -25,6 +25,7 @@ function App() {
     const [notes, setNotes] = useState("");
     const [description, setDescription] = useState("");
     const [quantity, setQuantity] = useState("");
+    const [unit, setUnit] = useState("");
     const [price, setPrice] = useState("");
     const [amount, setAmount] = useState("");
     const [list, setList] = useState([]);
@@ -62,6 +63,7 @@ function App() {
                             <Table 
                                 description={description}
                                 quantity={quantity}
+                                unit={unit}
                                 price={price}
                                 amount={amount}
                                 list={list} 
@@ -276,6 +278,7 @@ function App() {
                                     <TableForm 
                                         description={description} setDescription={setDescription}
                                         quantity={quantity} setQuantity={setQuantity}
+                                        unit={unit} setUnit={setUnit}
                                         price={price} setPrice={setPrice}
                                         amount={amount} setAmount={setAmount} 
                                         list={list} setList={setList}
