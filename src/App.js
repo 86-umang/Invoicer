@@ -31,27 +31,60 @@ function App() {
     const [list, setList] = useState([]);
     const [total, setTotal] = useState(0);
     const [word, setWord] = useState("");
+    const [print, setPrint] = useState(false);
 
     const componentRef = useRef();
-    
+
+    const handleOnSubmit = async(e) => {
+        e.preventDefault();
+        let result = await fetch(
+        'http://localhost:5000/register', {
+            method: "post",
+            body: JSON.stringify({ clientName, clientAddress, invoiceNumber, invoiceDate, dueDate, list, total, word }),
+            headers: {
+                'Content-Type': 'application/json'
+            }
+        })
+        result = await result.json();
+        console.warn(result);
+        if (result) {
+            alert("Data saved succesfully");
+        }
+        setPrint(true)
+    }
+
     return (
         <>
             <main className="m-5 p-5 md:max-w-xl md:mx-auto lg:max-w-2xl xl:max-w-4xl bg-white rounded shadow">
                 {showInvoice ? 
                     <>
-                        <ReactToPrint 
-                            trigger={() => 
-                                <button className="bg-blue-500
-                                    text-white font-bold py-2 px-8 
-                                    rounded shadow border-2 border-blue-500 
-                                    hover:bg-transparent hover:text-blue-500
-                                    transition-all duration-300">
-                                        Print / Download
+                        {print ? 
+                            <ReactToPrint 
+                                trigger={() => 
+                                    <button className="bg-blue-500
+                                        text-white font-bold py-2 px-8 
+                                        rounded shadow border-2 border-blue-500 
+                                        hover:bg-transparent hover:text-blue-500
+                                        transition-all duration-300">
+                                            Print / Download
+                                    </button>
+                                }
+                                content={() => componentRef.current}
+                                documentTitle= {clientName}
+                            />
+                            : (
+                                <button
+                                onClick={handleOnSubmit} 
+                                className="bg-green-500 
+                                text-white font-bold py-2 px-8 
+                                rounded shadow border-2 border-green-500 
+                                hover:bg-transparent hover:text-green-500
+                                transition-all duration-300"
+                                >
+                                    Submit
                                 </button>
-                            }
-                            content={() => componentRef.current}
-                            documentTitle= {clientName}
-                        />
+                            )
+                        }
                         <div ref={componentRef} className="p-5 pt-7 border-b-2 border-t-2 border-l-2 border-r-2 border-gray-500 mt-5 mr-5 ml-5">
                             <Header/>
 
@@ -88,7 +121,7 @@ function App() {
                             transition-all duration-300"
                         >
                             Edit Information
-                        </button> 
+                        </button>
                     </> : (
                         <>
                             <div className="flex flex-col justify-center">
@@ -236,7 +269,7 @@ function App() {
                                     <div className="flex flex-col">
                                         <label htmlFor="invoiceNumber">Invoice Number</label>
                                         <input 
-                                            type="text" 
+                                            type="number" 
                                             name="invoiceNumber" 
                                             id="invoiceNumber" 
                                             placeholder="Invoice Number"
