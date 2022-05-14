@@ -9,6 +9,9 @@ import Notes from "./components/Notes";
 import Table from "./components/Table";
 import TableForm from "./components/TableForm";
 
+import db from "./firebase";
+import {collection, addDoc} from 'firebase/firestore'
+
 function App() {
 
     const [showInvoice, setShowInvoice] = useState(false);
@@ -35,21 +38,46 @@ function App() {
 
     const componentRef = useRef();
 
-    const handleOnSubmit = async(e) => {
+    // const handleOnSubmit = async(e) => {
+    //     e.preventDefault();
+
+    //     const result = await fetch(
+    //     '/', {
+    //         method: "POST",
+    //         headers: {
+    //             'Content-Type': 'application/json'
+    //         },
+    //         body: JSON.stringify({ clientName, clientAddress }),
+    //     });
+
+    //     result = await result.json();
+    //     console.warn(result);
+    //     if (result) {
+    //         alert("Data saved succesfully");
+    //     }
+    //     setPrint(true)
+    // }
+
+    const handleOnSubmit = (e) => {
         e.preventDefault();
-        let result = await fetch(
-        'http://localhost:5000/register', {
-            method: "post",
-            body: JSON.stringify({ clientName, clientAddress, invoiceNumber, invoiceDate, dueDate, list, total, word }),
-            headers: {
-                'Content-Type': 'application/json'
-            }
+
+        addDoc(collection(db,'clients'),{
+            clientName: clientName, 
+            clientAddress: clientAddress, 
+            invoiceNumber: invoiceNumber, 
+            invoiceDate: invoiceDate, 
+            dueDate: dueDate, 
+            list: list, 
+            total: total, 
+            word: word
         })
-        result = await result.json();
-        console.warn(result);
-        if (result) {
-            alert("Data saved succesfully");
-        }
+        .then(() => {
+            alert('Data saved succesfully');
+        })
+        .catch(error => {
+            alert(error.message);
+        })
+
         setPrint(true)
     }
 
