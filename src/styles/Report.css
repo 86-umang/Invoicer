@@ -1,0 +1,21 @@
+.bneon {
+    position:relative;
+    display: block;
+    padding: 15px 30px;
+    color: #234464;
+    background: #92B4EC;
+    text-transform: uppercase;
+    letter-spacing: 4px;
+    text-decoration: none;
+    overflow: hidden;
+    transition: 0.2s;
+    font-weight: bold;
+    border-radius: 12px;
+}
+
+.bneon:hover {
+    color: #255784;
+    background: #2196f3;
+    box-shadow: 0 0 10px #070a0d, 0 0 40px #03599f, 0 0 80px #757676;
+    overflow: hidden;
+}
