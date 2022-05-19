@@ -7,6 +7,7 @@ import Report from './Report';
 import {companies} from './companies';
 import ReportDetails from './ReportDetails';
 import { BrowserRouter } from 'react-router-dom';
+import Bills from './Bills';
 
 function Main() {
 
@@ -23,9 +24,10 @@ function Main() {
             <HeaderComponent />
             <BrowserRouter>
                 <Switch>
-                    <Route path="/report/:id" component={withRouter(() => <ReportDetails />)} />
-                    <Route exact path="/report" component={withRouter(() => <Report />)} />
-                    <Route path="/home" component={withRouter(() => <Home />)} />
+                    <Route path="/home" component={() => <Home />} />
+                    <Route exact path="/report" component={() => <Report />} />
+                    <Route path="/report/:id" component={() => <ReportDetails />} />
+                    <Route path="/bills" component={() => <Bills />} />
                     <Redirect to="/home" />
                 </Switch>
             </BrowserRouter>

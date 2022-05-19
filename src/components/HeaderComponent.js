@@ -17,6 +17,9 @@ function HeaderComponent(props) {
                         <a href="/report" className="font-bold block mt-4 inline-block mt-0 text-teal-200 hover:text-blue-800 mr-4">
                             Report
                         </a>
+                        <a href="/bills" className="font-bold block mt-4 inline-block mt-0 text-teal-200 hover:text-blue-800 mr-4">
+                            Bills
+                        </a>
                     </div>
                 </div>
             </nav>
