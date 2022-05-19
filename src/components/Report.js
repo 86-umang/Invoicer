@@ -5,7 +5,7 @@ import '../styles/Report.css';
 function Report() {
     
     return (
-        <div>
+        <div className="bneongrid">
             {companies.map((company) => (
                 <div className="md:inline-block">
                     <div key={company.id} className="m-5 inline-block">

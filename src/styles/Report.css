@@ -1,6 +1,8 @@
 .bneon {
     position:relative;
     display: block;
+    width: 100%;
+    height: 100%;
     padding: 15px 30px;
     color: #234464;
     background: #92B4EC;
@@ -14,8 +16,27 @@
 }
 
 .bneon:hover {
-    color: #255784;
+    color: #ffffff;
     background: #2196f3;
     box-shadow: 0 0 10px #070a0d, 0 0 40px #03599f, 0 0 80px #757676;
     overflow: hidden;
+}
+
+@media only screen and (min-width: 540px) {
+    .bneongrid {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+@media only screen and (min-width: 790px) {
+    .bneongrid {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+    }
+}
+@media only screen and (min-width: 1024px) {
+    .bneongrid {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+    }
 }
