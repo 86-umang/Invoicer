@@ -8,3 +8,27 @@
         margin-top: 15pt;
     }
 }
+
+@media only screen and (max-width: 395px) {
+    .tsize {
+        font-size: 15px;
+    }
+}
+
+@media only screen and (max-width: 379px) {
+    .tsize {
+        font-size: 14px;
+    }
+}
+
+@media only screen and (max-width: 361px) {
+    .tsize {
+        font-size: 13px;
+    }
+}
+
+@media only screen and (max-width: 343px) {
+    .tsize {
+        font-size: 12px;
+    }
+}

@@ -64,29 +64,33 @@ function Home() {
     const handleOnSubmit = (e) => {
         e.preventDefault();
 
-        addDoc(collection(db,'clients'),{
-            clientName: clientName,
-            clientId: clientId, 
-            clientAddress: clientAddress, 
-            invoiceNumber: invoiceNumber, 
-            invoiceDate: invoiceDate, 
-            dueDate: dueDate, 
-            list: list, 
-            total: total, 
-            word: word
-        })
-        .then(() => {
-            alert('Data saved succesfully');
-        })
-        .then(() => setPrint(true))
-        .catch(error => {
-            alert(error.message);
-        })
+        if (!clientName || !clientAddress || !invoiceNumber || !invoiceDate || !dueDate || !total ) {
+            alert("Please fill in all inputs")
+        } else {
+            addDoc(collection(db,'clients'),{
+                clientName: clientName,
+                clientId: clientId, 
+                clientAddress: clientAddress, 
+                invoiceNumber: invoiceNumber, 
+                invoiceDate: invoiceDate, 
+                dueDate: dueDate, 
+                list: list, 
+                total: total, 
+                word: word
+            })
+            .then(() => {
+                alert('Data saved succesfully');
+            })
+            .then(() => setPrint(true))
+            .catch(error => {
+                alert(error.message);
+            })
+        }
     }
 
     return (
         <>
-            <main className="m-5 p-5 md:max-w-xl md:mx-auto lg:max-w-2xl xl:max-w-4xl bg-white rounded shadow">
+            <main className="m-5 p-5 md:max-w-xl md:mx-auto lg:max-w-2xl xl:max-w-4xl bg-white rounded shadow box">
                 {showInvoice ? 
                     <>
                         {print ? 

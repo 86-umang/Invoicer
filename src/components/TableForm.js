@@ -207,7 +207,7 @@ function TableForm({description, setDescription, quantity, setQuantity, unit, se
             </form>
 
             {/* Table items */}
-            <table className='mt-5' width="100%">
+            <table className='mt-5 tsize' width="100%">
                 <thead>
                     <tr className='bg-gray-100'>
                         <td className='font-bold'>Description</td>

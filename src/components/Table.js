@@ -1,9 +1,10 @@
 import React from 'react';
+import '../styles/Table.css';
 
 function Table({list, total, word}) {
     return (
         <>
-            <table className='mt-5' width="100%">
+            <table className='mt-5 twidth' width="100%">
                 <thead>
                     <tr className='bg-gray-100'>
                         <td className='font-bold'>Description</td>
@@ -28,7 +29,7 @@ function Table({list, total, word}) {
                 ))}
             </table>
 
-            <table className='mt-5' width="100%">
+            <table className='mt-5 twidth1' width="100%">
                 <tbody>
                     <tr>
                         <td align='left' className='font-bold text-3xl text-gray-600'>Total:</td>
@@ -37,7 +38,7 @@ function Table({list, total, word}) {
                 </tbody>
             </table>
 
-            <table className='mt-5' width="100%">
+            <table className='mt-5 twidth1' width="100%">
                 <tbody>
                     <tr>
                         <td className='font-bold text-xl text-gray-600'>Total in words:</td>
