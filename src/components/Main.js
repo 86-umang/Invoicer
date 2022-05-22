@@ -1,36 +1,87 @@
-import React from 'react';
-import { CSSTransition, TransitionGroup } from 'react-transition-group';
-import {Route, Redirect, Switch, withRouter} from 'react-router-dom'
+import React, {useState} from 'react';
+import {Route, Routes, Navigate} from 'react-router-dom'
 import HeaderComponent from './HeaderComponent';
 import Home from './Home';
 import Report from './Report';
-import {companies} from './companies';
 import ReportDetails from './ReportDetails';
-import { BrowserRouter } from 'react-router-dom';
 import Bills from './Bills';
+import Login from './Login';
 
 function Main() {
 
-    // const ReportWithId = () => {
-    //     return(
-    //         <ReportDetails 
-    //             company = {companies.filter((company) => company.id === parseInt(params.id,10))[0]} 
-    //         />
-    //     )
-    // }
+    const [email, setEmail] = useState();
+    const [password, setPassword] = useState();
+    const [showHeader, setShowHeader] = useState(false);
+
+    const RequireAuth = ({ children }) => {
+        if (((localStorage.getItem("email"))=== null && (localStorage.getItem("password"))=== null) || 
+            ((localStorage.getItem("email"))=== 'undefined' && (localStorage.getItem("password"))=== 'undefined')) {
+            return <Navigate to="/login" />;
+        }
+        else {
+            setShowHeader(true)
+            return children
+        }    
+    };
+
+    var minute = 2; 
+    var now = new Date().getTime();
+    var setupTime = localStorage.getItem('setupTime');
+    if (setupTime == null) {
+        localStorage.setItem('setupTime', now)
+    } else {
+        if(now-setupTime > minute*60*1000) {
+            localStorage.clear()
+            localStorage.setItem('setupTime', now);
+        }
+    }
 
     return (
         <div>
-            <HeaderComponent />
-            <BrowserRouter>
-                <Switch>
-                    <Route path="/home" component={() => <Home />} />
-                    <Route exact path="/report" component={() => <Report />} />
-                    <Route path="/report/:id" component={() => <ReportDetails />} />
-                    <Route path="/bills" component={() => <Bills />} />
-                    <Redirect to="/home" />
-                </Switch>
-            </BrowserRouter>
+            {showHeader ? 
+                <HeaderComponent />
+                : (
+                    <></>
+                )
+            }
+            <Routes>
+                <Route path="/login" element={<Login email={email} password={password} setEmail={setEmail} setPassword={setPassword} />} />
+                <Route path="/home" 
+                    element={
+                        <RequireAuth>
+                            <Home />
+                        </RequireAuth>
+                    } 
+                />
+                <Route exact path="/report" 
+                    element={
+                        <RequireAuth>
+                            <Report />
+                        </RequireAuth>
+                    } 
+                />
+                <Route path="/report/:id" 
+                    element={
+                        <RequireAuth>
+                            <ReportDetails />
+                        </RequireAuth>
+                    } 
+                />
+                <Route path="/bills" 
+                    element={
+                        <RequireAuth>
+                            <Bills />
+                        </RequireAuth>
+                    } 
+                />
+                <Route path="/" 
+                    element={
+                        <RequireAuth>
+                            <Navigate replace to="/home" />
+                        </RequireAuth>
+                    } 
+                />
+            </Routes>
         </div>
     );
 }

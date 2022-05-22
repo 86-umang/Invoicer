@@ -1,0 +1,102 @@
+input {
+    background-color: #ffffff;
+    padding: 0.5rem;
+    border-radius: 0.2rem;
+    margin: 10px;
+    margin-bottom: 1.5rem;
+    color: #383838;
+    font-weight: 600;
+}
+
+label, button {
+    margin: 10px;
+    margin-bottom:auto;
+}
+
+.login {
+    width: 400px;
+    height: 300px;
+    margin: auto;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    padding: 10px;
+}
+
+@media only screen and (max-width: 500px) {
+    .login {
+        width: 80%;
+        margin: auto;
+        position: absolute;
+        left: 50%;
+        top: 50%;
+        transform: translate(-50%, -50%);
+        padding: 10px;
+        box-sizing: border-box;
+    }
+}
+/*
+@media only screen and (min-width: 760px) {
+    .login {
+        width: 60%;
+        margin: auto;
+        position: absolute;
+        left: 50%;
+        top: 50%;
+        transform: translate(-50%, -50%);
+        padding: 10px;
+    }
+}
+
+@media only screen and (min-width: 900px) {
+    .login {
+        width: 50%;
+        margin: auto;
+        position: absolute;
+        left: 50%;
+        top: 50%;
+        transform: translate(-50%, -50%);
+        padding: 10px;
+    }
+}
+
+@media only screen and (min-width: 1024px) {
+    .login {
+        width: 45%;
+        margin: auto;
+        position: absolute;
+        left: 50%;
+        top: 50%;
+        transform: translate(-50%, -50%);
+        padding: 10px;
+    }
+}
+
+@media only screen and (min-width: 1140px) {
+    .login {
+        width: 40%;
+        margin: auto;
+        position: absolute;
+        left: 50%;
+        top: 50%;
+        transform: translate(-50%, -50%);
+        padding: 10px;
+    }
+} */
+
+.logintitle {
+            margin: auto;
+            position: absolute;
+            left: 50%;
+            top: 50%;
+            transform: translate(-50%, -340%);
+            padding: 10px;
+            font-weight: bold;
+            font-size: 35px;
+            color: #0d47a1;
+}
+
+.loginbox {
+    box-shadow: 0 0 10px #b6b6b6, 0 0 20px #dadada, 0 0 30px #bbcccc;
+}
