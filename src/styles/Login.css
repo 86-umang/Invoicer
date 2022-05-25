@@ -1,5 +1,5 @@
-input {
-    background-color: #ffffff;
+.logi {
+    background-color: #f1f1f1;
     padding: 0.5rem;
     border-radius: 0.2rem;
     margin: 10px;
@@ -8,14 +8,15 @@ input {
     font-weight: 600;
 }
 
-label, button {
+.logl {
     margin: 10px;
     margin-bottom:auto;
 }
 
 .login {
     width: 400px;
-    height: 300px;
+    height: 310px;
+    background-color: #ffffff;
     margin: auto;
     position: absolute;
     left: 50%;
@@ -36,67 +37,96 @@ label, button {
         box-sizing: border-box;
     }
 }
-/*
-@media only screen and (min-width: 760px) {
-    .login {
-        width: 60%;
-        margin: auto;
-        position: absolute;
-        left: 50%;
-        top: 50%;
-        transform: translate(-50%, -50%);
-        padding: 10px;
-    }
-}
-
-@media only screen and (min-width: 900px) {
-    .login {
-        width: 50%;
-        margin: auto;
-        position: absolute;
-        left: 50%;
-        top: 50%;
-        transform: translate(-50%, -50%);
-        padding: 10px;
-    }
-}
-
-@media only screen and (min-width: 1024px) {
-    .login {
-        width: 45%;
-        margin: auto;
-        position: absolute;
-        left: 50%;
-        top: 50%;
-        transform: translate(-50%, -50%);
-        padding: 10px;
-    }
-}
-
-@media only screen and (min-width: 1140px) {
-    .login {
-        width: 40%;
-        margin: auto;
-        position: absolute;
-        left: 50%;
-        top: 50%;
-        transform: translate(-50%, -50%);
-        padding: 10px;
-    }
-} */
 
 .logintitle {
-            margin: auto;
-            position: absolute;
-            left: 50%;
-            top: 50%;
-            transform: translate(-50%, -340%);
-            padding: 10px;
-            font-weight: bold;
-            font-size: 35px;
-            color: #0d47a1;
+    margin: auto;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -340%);
+    padding: 10px;
+    font-weight: bold;
+    font-size: 35px;
+    color: #0d47a1;
 }
 
 .loginbox {
     box-shadow: 0 0 10px #b6b6b6, 0 0 20px #dadada, 0 0 30px #bbcccc;
+}
+
+.eye {
+    margin-left: 340px;
+    margin-top: 55px
+}
+
+@media only screen and (max-width: 495px) {
+    .eye {
+        margin-left: 320px;
+    }
+}
+
+@media only screen and (max-width: 468px) {
+    .eye {
+        margin-left: 310px;
+    }
+}
+
+@media only screen and (max-width: 457px) {
+    .eye {
+        margin-left: 300px;
+    }
+}
+
+@media only screen and (max-width: 444px) {
+    .eye {
+        margin-left: 290px;
+    }
+}
+
+@media only screen and (max-width: 431px) {
+    .eye {
+        margin-left: 280px;
+    }
+}
+
+@media only screen and (max-width: 417px) {
+    .eye {
+        margin-left: 260px;
+    }
+}
+
+@media only screen and (max-width: 393px) {
+    .eye {
+        margin-left: 240px;
+    }
+}
+
+@media only screen and (max-width: 369px) {
+    .eye {
+        margin-left: 220px;
+    }
+}
+
+@media only screen and (max-width: 345px) {
+    .eye {
+        margin-left: 200px;
+    }
+}
+
+@media only screen and (max-width: 317px) {
+    .eye {
+        margin-left: 180px;
+    }
+}
+
+@media only screen and (max-width: 291px) {
+    .eye {
+        margin-left: 170px;
+    }
+}
+
+@media only screen and (max-width: 278px) {
+    .eye {
+        margin-left: 160px;
+    }
 }

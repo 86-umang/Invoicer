@@ -2,7 +2,11 @@ import React from 'react';
 
 function HeaderComponent(props) {
 
-    //const [home, setHome] = useState(false);
+    const handleLogout = () => {
+        localStorage.clear()
+        window.location.reload(true);
+    }
+
     return (
         <header>
             <nav className="flex items-center justify-between flex-wrap bg-teal-500 pb-5 pl-6 md:pl-20 bg-gray-300">
@@ -20,6 +24,15 @@ function HeaderComponent(props) {
                         <a href="/bills" className="font-bold block mt-4 inline-block mt-0 text-teal-200 hover:text-blue-800 mr-4">
                             Bills
                         </a>
+                        <button 
+                            onClick={handleLogout}
+                            type="button" 
+                            title="Logout" 
+                            className="navbtn font-bold block mt-4 inline-block mt-0 text-teal-200 mr-4
+                                bg-red-800 text-white px-2 rounded shadow border-2 border-red-800 hover:bg-transparent hover:text-red-800 transition-all duration-300">
+                            <i className="fa-solid fa-right-from-bracket"></i> 
+                            <span className='log'> Logout</span>
+                        </button>
                     </div>
                 </div>
             </nav>
