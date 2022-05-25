@@ -6,7 +6,6 @@ import '../styles/Login.css'
 function Login({email, setEmail, password, setPassword}) {
 
     const { login } = useAuth()
-    const [error, setError] = useState("")
     const [passwordType, setPasswordType] = useState("password");
     
     const navitage = useNavigate()
@@ -18,12 +17,10 @@ function Login({email, setEmail, password, setPassword}) {
         e.preventDefault()
 
         try {
-            setError("")
             await login(email, password)
             navitage('/home');
         } catch {
-            setError("Failed to log in")
-            alert(error);
+            alert("Invalid Email or Password...");
         }
     }
 

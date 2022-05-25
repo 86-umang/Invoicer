@@ -9,12 +9,12 @@
 
 /* Logout button */
 
-@media only screen and (min-width: 500px) {
+@media only screen and (min-width: 1997px) {
     .navbtn {
         margin-left: 1500px;
     }
 }
-
+ 
 @media only screen and (max-width: 1997px) {
     .navbtn {
         margin-left: 1400px;
@@ -88,18 +88,6 @@
 }
 
 @media only screen and (max-width: 786px) {
-    .navbtn {
-        margin-left: 250px;
-    }
-}
-
-@media only screen and (max-width: 769px) {
-    .navbtn {
-        margin-left: 280px;
-    }
-}
-
-@media only screen and (max-width: 710px) {
     .navbtn {
         margin-left: 250px;
     }
