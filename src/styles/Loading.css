@@ -57,119 +57,97 @@
     }
 }
 
-@media only screen and (max-width: 1286px) {
+@media only screen and (max-width: 1288px) {
     .navbtn {
-        margin-left: 700px;
+        margin-left: 680px;
     }
 }
 
 @media only screen and (max-width: 1192px) {
     .navbtn {
-        margin-left: 600px;
+        margin-left: 570px;
     }
 }
 
 @media only screen and (max-width: 1087px) {
     .navbtn {
-        margin-left: 500px;
+        margin-left: 480px;
     }
 }
 
 @media only screen and (max-width: 991px) {
     .navbtn {
-        margin-left: 400px;
+        margin-left: 380px;
     }
 }
 
 @media only screen and (max-width: 888px) {
     .navbtn {
-        margin-left: 300px;
+        margin-left: 280px;
     }
 }
 
 @media only screen and (max-width: 786px) {
     .navbtn {
-        margin-left: 250px;
+        margin-left: 220px;
     }
 }
 
 @media only screen and (max-width: 681px) {
     .navbtn {
-        margin-left: 200px;
+        margin-left: 180px;
     }
 }
 
 @media only screen and (max-width: 630px) {
     .navbtn {
-        margin-left: 180px;
+        margin-left: 160px;
     }
 }
 
 @media only screen and (max-width: 610px) {
     .navbtn {
-        margin-left: 150px;
+        margin-left: 130px;
     }
 }
 
 @media only screen and (max-width: 581px) {
     .navbtn {
-        margin-left: 130px;
+        margin-left: 110px;
     }
 }
 
 @media only screen and (max-width: 561px) {
     .navbtn {
-        margin-left: 100px;
+        margin-left: 80px;
     }
 }
 
 @media only screen and (max-width: 530px) {
     .navbtn {
-        margin-left: 80px;
+        margin-left: 60px;
     }
 }
 
 @media only screen and (max-width: 510px) {
     .navbtn {
-        margin-left: 60px;
+        margin-left: 40px;
     }
 }
 
 @media only screen and (max-width: 490px) {
     .navbtn {
-        margin-left: 40px;
+        margin-left: 22px;
     }
 }
 
 @media only screen and (max-width: 470px) {
     .navbtn {
-        margin-left: 20px;
-    }
-}
-
-@media only screen and (max-width: 450px) {
-    .navbtn {
-        margin-left: 10px;
-    }
-}
-
-@media only screen and (max-width: 441px) {
-    .navbtn {
         margin-left: 5px;
     }
 }
 
-@media only screen and (max-width: 435px) {
-    .navbtn {
-        margin-left: 50px;
-    }
-
-    .log {
-        display: none;
-    }
-}
-
-@media only screen and (max-width: 422px) {
+@media only screen and (max-width: 452px) {
     .navbtn {
         margin-left: 40px;
     }
@@ -179,7 +157,7 @@
     }
 }
 
-@media only screen and (max-width: 413px) {
+@media only screen and (max-width: 431px) {
     .navbtn {
         margin-left: 30px;
     }
@@ -189,7 +167,7 @@
     }
 }
 
-@media only screen and (max-width: 402px) {
+@media only screen and (max-width: 420px) {
     .navbtn {
         margin-left: 20px;
     }
@@ -199,7 +177,7 @@
     }
 }
 
-@media only screen and (max-width: 393px) {
+@media only screen and (max-width: 410px) {
     .navbtn {
         margin-left: 10px;
     }
@@ -209,7 +187,17 @@
     }
 }
 
-@media only screen and (max-width: 382px) {
+@media only screen and (max-width: 400px) {
+    .navbtn {
+        margin-left: 8px;
+    }
+
+    .log {
+        display: none;
+    }
+}
+
+@media only screen and (max-width: 398px) {
     .navbtn {
         margin-left: 5px;
     }
@@ -219,7 +207,7 @@
     }
 }
 
-@media only screen and (max-width: 377px) {
+@media only screen and (max-width: 395px) {
     .navbtn {
         margin-left: 2px;
     }
@@ -229,7 +217,7 @@
     }
 }
 
-@media only screen and (max-width: 374px) {
+@media only screen and (max-width: 392px) {
     .navbtn {
         margin-left: 0px;
     }
@@ -239,7 +227,7 @@
     }
 }
 
-@media only screen and (max-width: 373px) {
+@media only screen and (max-width: 390px) {
     .log {
         display: inline;
     }
