@@ -110,6 +110,7 @@ function TableForm({description, setDescription, quantity, setQuantity, unit, se
                             <option>Milk (Taja)</option>
                             <option>Milk (Small)</option>
                             <option>Butter Milk</option>
+                            <option>Coffee</option>
                             <option>Curd</option>
                             <option>Loose Curd</option>
                             <option>Tin Curd</option>
