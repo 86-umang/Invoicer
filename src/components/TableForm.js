@@ -25,7 +25,7 @@ function TableForm({description, setDescription, quantity, setQuantity, unit, se
             }
             setDescription("")
             setQuantity("")
-            setUnit("")
+            setUnit("pkt")
             setPrice("")
             setAmount("")
             setList([...list, newItems]) 

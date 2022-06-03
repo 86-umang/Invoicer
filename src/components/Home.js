@@ -31,7 +31,7 @@ function Home() {
     const [notes, setNotes] = useState("");
     const [description, setDescription] = useState("");
     const [quantity, setQuantity] = useState("");
-    const [unit, setUnit] = useState("");
+    const [unit, setUnit] = useState("pkt");
     const [price, setPrice] = useState("");
     const [amount, setAmount] = useState("");
     const [list, setList] = useState([]);
